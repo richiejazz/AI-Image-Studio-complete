@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+
+# Legacy temp uploads from the old disk-based multer setup
+cloudinary-ai-system/uploads/
+
+# OS / editor
+.DS_Store
+*.log
+.vscode/

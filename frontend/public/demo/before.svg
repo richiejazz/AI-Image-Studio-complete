@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2868"/><stop offset=".55" stop-color="#b9557c"/><stop offset="1" stop-color="#f4a46a"/></linearGradient>
+  <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7be3ae"/><stop offset="1" stop-color="#1f8a5c"/></linearGradient>
+  <linearGradient id="leafB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fd39a"/><stop offset="1" stop-color="#176e4a"/></linearGradient>
+  <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e58a5e"/><stop offset="1" stop-color="#a8482c"/></linearGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a079"/><stop offset="1" stop-color="#c25d38"/></linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#sky)"/>
+<circle cx="610" cy="210" r="68" fill="#ffd9a3" opacity=".92"/>
+<circle cx="150" cy="110" r="2" fill="#fff" opacity=".7"/><circle cx="240" cy="70" r="1.5" fill="#fff" opacity=".6"/><circle cx="520" cy="60" r="1.8" fill="#fff" opacity=".6"/><circle cx="700" cy="90" r="1.4" fill="#fff" opacity=".5"/>
+<path d="M0 410 L120 320 L230 395 L360 290 L500 405 L620 335 L800 425 V600 H0Z" fill="#3b2f62" opacity=".88"/>
+<path d="M0 475 L160 415 L320 465 L480 425 L640 478 L800 445 V600 H0Z" fill="#251f47"/>
+<rect y="515" width="800" height="85" fill="#1a1634"/>
+<ellipse cx="400" cy="522" rx="120" ry="12" fill="#000" opacity=".35"/>
+<g>
+  <ellipse cx="400" cy="235" rx="28" ry="105" fill="url(#leafA)"/>
+  <ellipse cx="350" cy="268" rx="25" ry="92" fill="url(#leafB)" transform="rotate(-27 350 268)"/>
+  <ellipse cx="450" cy="268" rx="25" ry="92" fill="url(#leafB)" transform="rotate(27 450 268)"/>
+  <ellipse cx="318" cy="318" rx="21" ry="70" fill="url(#leafA)" transform="rotate(-56 318 318)"/>
+  <ellipse cx="482" cy="318" rx="21" ry="70" fill="url(#leafA)" transform="rotate(56 482 318)"/>
+  <path d="M400 140 V360 M350 190 L398 360 M450 190 L402 360" stroke="#145c3d" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55"/>
+  <path d="M332 382 H468 L450 520 Q400 532 350 520 Z" fill="url(#pot)"/>
+  <rect x="318" y="362" width="164" height="30" rx="8" fill="url(#rim)"/>
+  <path d="M352 420 Q400 432 448 420" stroke="#fff" stroke-opacity=".18" stroke-width="6" fill="none" stroke-linecap="round"/>
+</g>
+</svg>

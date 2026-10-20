@@ -1,10 +1,12 @@
 {
   "name": "cloudinary-ai-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express API for AI Image Studio: Cloudinary-powered upload optimization, background removal, face cropping and social media resizing.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,11 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.7.1",
     "multer": "^2.1.1"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20"
   }
 }
