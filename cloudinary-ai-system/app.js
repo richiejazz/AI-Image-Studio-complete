@@ -3,15 +3,12 @@ const cors = require("cors");
 const { rateLimit } = require("express-rate-limit");
 const cloudinary = require("./cloudinary");
 const { imageUpload, HttpError } = require("./upload");
-const proxyDiagnostic = require("./proxy-diagnostic");
 
 const app = express();
 
 app.disable("x-powered-by");
 // Number of reverse proxies in front of the app (e.g. 1 on Render), so rate limiting sees real client IPs
 app.set("trust proxy", Number(process.env.TRUST_PROXY) || 0);
-
-app.use(proxyDiagnostic);
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173")
   .split(",")
