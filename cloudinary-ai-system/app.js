@@ -7,11 +7,8 @@ const { imageUpload, HttpError } = require("./upload");
 const app = express();
 
 app.disable("x-powered-by");
-// Render forwards requests through a varying number of internal proxies on private addresses,
-// so a fixed hop count lands on a rotating proxy IP. Trusting only private ranges makes req.ip
-// the right-most public address in X-Forwarded-For: the one Render's edge recorded for the
-// visitor, which entries a visitor adds to the header themselves can't override.
-app.set("trust proxy", "loopback, linklocal, uniquelocal");
+// Number of reverse proxies in front of the app (e.g. 1 on Render), so rate limiting sees real client IPs
+app.set("trust proxy", Number(process.env.TRUST_PROXY) || 0);
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173")
   .split(",")
