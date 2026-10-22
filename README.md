@@ -65,7 +65,6 @@ npm test
 | `PORT` | Port to listen on (default `3000`; most hosts set it) |
 | `ALLOWED_ORIGINS` | Comma-separated frontend origins allowed by CORS |
 | `RATE_LIMIT_MAX` | Processing requests per IP per 15 minutes (default `30`) |
-| `TRUST_PROXY` | Number of reverse proxies in front of the API (`1` on Render/Railway) |
 
 **Frontend (`frontend/.env`)**, public, bundled into the browser build:
 
@@ -85,7 +84,7 @@ The two parts deploy separately.
 - Build command: `npm ci`
 - Start command: `npm start`
 - Health check path: `/health`
-- Environment: the Cloudinary variables, `ALLOWED_ORIGINS=https://<your-frontend-domain>`, `TRUST_PROXY=1`
+- Environment: the Cloudinary variables, `ALLOWED_ORIGINS=https://<your-frontend-domain>`
 
 **Frontend**: any static host (for example Vercel, Netlify or Cloudflare Pages):
 
