@@ -1,6 +1,7 @@
 const express = require("express");
+const net = require("net");
 const cors = require("cors");
-const { rateLimit } = require("express-rate-limit");
+const { rateLimit, ipKeyGenerator } = require("express-rate-limit");
 const cloudinary = require("./cloudinary");
 const { imageUpload, HttpError } = require("./upload");
 
@@ -17,10 +18,22 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173")
 
 app.use(cors({ origin: allowedOrigins, methods: ["GET", "POST"] }));
 
+/**
+ * On Render, X-Forwarded-For arrives as "<anything the visitor sent>, visitor, Cloudflare edge,
+ * Render proxy", and both proxy addresses rotate per request, so no hop count gives the visitor.
+ * Cloudflare sets CF-Connecting-IP to the visitor's address and rejects requests that send their
+ * own, so it is the trustworthy key there. Without it (e.g. locally), fall back to req.ip.
+ */
+function clientKey(req) {
+  const cloudflareIp = req.get("cf-connecting-ip");
+  return ipKeyGenerator(cloudflareIp && net.isIP(cloudflareIp) ? cloudflareIp : req.ip);
+}
+
 // Every processing request costs Cloudinary credits, so cap it per client
 const processingLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: Number(process.env.RATE_LIMIT_MAX) || 30,
+  keyGenerator: clientKey,
   standardHeaders: "draft-8",
   legacyHeaders: false,
   message: { error: "Too many requests. Please wait a few minutes and try again." },
